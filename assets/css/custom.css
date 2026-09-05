@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   DESIGN SYSTEM — Mimix AI Editorial Style
+   ============================================================ */
+
+:root {
+  --font-display: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:    'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  --bg:           #090b10;
+  --bg-hero:      #0d1119;
+  --bg-card:      #111623;
+  --border:       rgba(255, 255, 255, 0.08);
+  --border-solid: #1e2535;
+
+  --fg:           #f0f2f7;
+  --fg-muted:     #8892a4;
+
+  --primary:      #3048ff;
+  --primary-dark: #2438e0;
+  --primary-glow: rgba(48, 72, 255, 0.30);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--border-solid); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+.glass-nav {
+  background: rgba(9, 11, 16, 0.90);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================================
+   CARDS — editorial solid surface (no glassmorphism)
+   ============================================================ */
+
+.card-elevated,
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-solid);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.card-elevated:hover,
+.glass-card:hover {
+  border-color: rgba(48, 72, 255, 0.40);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+
+/* Eyebrow label */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+/* Hero gradient text */
+.text-gradient,
+.text-gradient-purple {
+  background: linear-gradient(135deg, #ffffff 25%, #7090ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-green {
+  background: linear-gradient(135deg, #93c5fd 0%, #3048ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.bg-gradient-brand {
+  background: var(--primary);
+  box-shadow: 0 4px 18px var(--primary-glow);
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bg-gradient-brand:hover {
+  opacity: 0.90;
+  box-shadow: 0 6px 24px var(--primary-glow);
+}
+
+.bg-gradient-green {
+  background: var(--primary);
+  box-shadow: 0 4px 18px var(--primary-glow);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bg-gradient-green:hover {
+  opacity: 0.90;
+}
+
+/* Primary glow effect */
+.glow {
+  box-shadow: 0 0 24px var(--primary-glow), 0 4px 16px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+
+.bg-hero {
+  background-color: var(--bg-hero);
+}
+
+/* ============================================================
+   RANGE SLIDERS (Calculator)
+   ============================================================ */
+
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: var(--border-solid);
+  border-radius: 9999px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+  box-shadow: 0 0 12px var(--primary-glow), 0 0 0 3px var(--bg-card);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px var(--primary-glow), 0 0 0 4px var(--bg-card);
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: var(--border-solid);
+  border-radius: 9999px;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+
+/* ============================================================
+   ACCORDION (FAQ)
+   ============================================================ */
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.accordion-content.open {
+  max-height: 1000px;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.accordion-chevron {
+  transition: transform 0.3s ease;
+}
+
+.accordion-chevron.rotate {
+  transform: rotate(180deg);
+}
+
+/* ============================================================
+   MISC
+   ============================================================ */
+
+.copy-tooltip {
+  transition: all 0.25s ease;
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 2.5s ease-in-out infinite;
+}
+
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: #f3f4f6;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090615;
+}
+::-webkit-scrollbar-thumb {
+  background: #3b2875;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6d28d9;
+}
+
+/* Glassmorphism & Surface Cards */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.16);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(168, 85, 247, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.15);
+}
+
+.glass-nav {
+  background: rgba(9, 6, 21, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.12);
+}
+
+/* Gradients */
+.text-gradient-purple {
+  background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 40%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-green {
+  background: linear-gradient(135deg, #86efac 0%, #22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-brand {
+  background: linear-gradient(135deg, #7c3aed 0%, #9333ea 50%, #6d28d9 100%);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}
+
+.bg-gradient-brand:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #7c3aed 100%);
+  box-shadow: 0 6px 25px rgba(168, 85, 247, 0.5);
+}
+
+.bg-gradient-green {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.35);
+}
+
+.bg-gradient-green:hover {
+  background: linear-gradient(135deg, #22c55e 0%, #4ade80 100%);
+  box-shadow: 0 6px 25px rgba(34, 197, 94, 0.45);
+}
+
+/* Glowing Aura / Orb Effects */
+.hero-glow-1 {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.28) 0%, rgba(34, 197, 94, 0.08) 50%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-glow-2 {
+  position: absolute;
+  bottom: 0%;
+  right: -5%;
+  width: 500px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Range Slider Styling */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: rgba(168, 85, 247, 0.2);
+  border-radius: 9999px;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #22c55e;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.7), 0 0 0 4px rgba(22, 15, 51, 0.9);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.9), 0 0 0 5px rgba(22, 15, 51, 0.9);
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: rgba(168, 85, 247, 0.2);
+  border-radius: 9999px;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #22c55e;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.7);
+}
+
+/* Pulse badge animation */
+@keyframes softPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.9;
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 3s ease-in-out infinite;
+}
+
+/* Accordion Smooth Transitions */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.accordion-content.open {
+  max-height: 1000px;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.accordion-chevron {
+  transition: transform 0.3s ease;
+}
+
+.accordion-chevron.rotate {
+  transform: rotate(180deg);
+}
+
+/* Code Copy Tooltip */
+.copy-tooltip {
+  transition: all 0.25s ease;
+}
